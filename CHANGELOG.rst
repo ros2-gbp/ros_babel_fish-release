@@ -2,6 +2,9 @@
 Changelog for package ros_babel_fish_test_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.9.5 (2024-10-11)
+------------------
+
 0.9.3 (2024-08-16)
 ------------------
 * Removed unneeded dependency.
