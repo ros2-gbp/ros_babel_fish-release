@@ -1,9 +1,9 @@
 name: Lint & Test
 on:
   push:
-    branches: [ jazzy ]
+    branches: [ rolling ]
   pull_request:
-    branches: [ jazzy ]
+    branches: [ rolling ]
 defaults:
   run:
     shell: bash
@@ -37,7 +37,7 @@ jobs:
     strategy:
       matrix:
         setup:
-          - rosdistro: jazzy
+          - rosdistro: rolling
             os: ubuntu-latest
     steps:
       - name: install build tools
