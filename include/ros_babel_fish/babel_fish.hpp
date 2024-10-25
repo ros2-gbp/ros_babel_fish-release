@@ -5,6 +5,7 @@
 #define ROS_BABEL_FISH_BABEL_FISH_HPP
 
 #include "ros_babel_fish/detail/babel_fish_action_client.hpp"
+#include "ros_babel_fish/detail/babel_fish_action_server.hpp"
 #include "ros_babel_fish/detail/babel_fish_publisher.hpp"
 #include "ros_babel_fish/detail/babel_fish_service.hpp"
 #include "ros_babel_fish/detail/babel_fish_service_client.hpp"
@@ -114,6 +115,13 @@ public:
                                                   const std::string &type, const rclcpp::QoS &qos,
                                                   rclcpp::PublisherOptions options = {} );
 
+  /*!
+   * Creates a service server for the given service name and type.
+   * @param service_name The name under which the service should be registered.
+   * @param type The type of the service, e.g., rcl_interfaces/srv/GetParameters
+   * @param callback The callback that should be called when the service is called.
+   * @return A pointer to the created service server.
+   */
   template<typename CallbackT>
   BabelFishService::SharedPtr
   create_service( rclcpp::Node &node, const std::string &service_name, const std::string &type,
@@ -125,17 +133,47 @@ public:
     return create_service( node, service_name, type, any_callback, qos_profile, group );
   }
 
+  //! @copydoc create_service
   BabelFishService::SharedPtr
   create_service( rclcpp::Node &node, const std::string &service_name, const std::string &type,
                   AnyServiceCallback callback,
                   const rmw_qos_profile_t &qos_profile = rmw_qos_profile_services_default,
                   rclcpp::CallbackGroup::SharedPtr group = nullptr );
 
+  /*!
+   * Creates a service client for the given service name and type.
+   * @param service_name The name under which the service server is registered.
+   * @param type The type of the service, e.g., rcl_interfaces/srv/GetParameters
+   * @return A service client that can be used to call the service.
+   */
   BabelFishServiceClient::SharedPtr
   create_service_client( rclcpp::Node &node, const std::string &service_name, const std::string &type,
                          const rmw_qos_profile_t &qos_profile = rmw_qos_profile_services_default,
                          rclcpp::CallbackGroup::SharedPtr group = nullptr );
 
+  /*!
+   * Creates an action server for the given name and type.
+   * @param name The name under which the action server is registered.
+   * @param type They type of the action.
+   * @param handle_goal Callback when a new goal was received.
+   * @param handle_cancel Callback when a cancel request was received.
+   * @param handle_accepted Callback when a goal was accepted. Should start executing the goal.
+   * @return An action server that goals can be sent to for processing.
+   */
+  BabelFishActionServer::SharedPtr create_action_server(
+      rclcpp::Node &node, const std::string &name, const std::string &type,
+      BabelFishActionServer::GoalCallback handle_goal,
+      BabelFishActionServer::CancelCallback handle_cancel,
+      BabelFishActionServer::AcceptedCallback handle_accepted,
+      const rcl_action_server_options_t &options = rcl_action_server_get_default_options(),
+      rclcpp::CallbackGroup::SharedPtr group = nullptr );
+
+  /*!
+   * Creates an action client for the given name and type.
+   * @param name The name under which the action server is registered.
+   * @param type The type of the action
+   * @return An action client that can be used to send goals to the action server.
+   */
   BabelFishActionClient::SharedPtr create_action_client(
       rclcpp::Node &node, const std::string &name, const std::string &type,
       const rcl_action_client_options_t &options = rcl_action_client_get_default_options(),
@@ -143,7 +181,7 @@ public:
 
   /*!
    * Creates an empty message of the given type.
-   * @param type The message type, e.g.: "std_msgs/Header"
+   * @param type The message type, e.g.: "std_msgs/msg/Header"
    * @return An empty message of the given type
    *
    * @throws BabelFishException If the message description was not found
@@ -155,7 +193,7 @@ public:
 
   /*!
    * Creates a service request message for the given service type.
-   * @param type The type of the service, e.g., rosapi/GetParam
+   * @param type The type of the service, e.g., rcl_interfaces/srv/GetParameters
    * @return An empty service request message that can be used to call a service of the given type
    *
    * @throws BabelFishException If the service description was not found
@@ -164,6 +202,16 @@ public:
 
   //! @copydoc create_service_request
   CompoundMessage::SharedPtr create_service_request_shared( const std::string &type ) const;
+
+  /*!
+   * Creates an empty action goal for the given action type.
+   * @param type The type of the action, e.g., example_interfaces/action/Fibonacci
+   * @return An empty action goal message that can be used to send a goal to an action server.
+   */
+  CompoundMessage create_action_goal( const std::string &type ) const;
+
+  //! @copydoc create_action_goal_request
+  CompoundMessage::SharedPtr create_action_goal_shared( const std::string &type ) const;
 
   MessageTypeSupport::ConstSharedPtr get_message_type_support( const std::string &type ) const;
 
