@@ -1,9 +1,9 @@
 name: Lint & Test
 on:
   push:
-    branches: [ rolling ]
+    branches: [ jazzy ]
   pull_request:
-    branches: [ rolling ]
+    branches: [ jazzy ]
 defaults:
   run:
     shell: bash
@@ -24,7 +24,7 @@ jobs:
           clang-format -Werror -n -style=file $(find . -name '*.cpp' -o -name '*.hpp' -o -name '*.h' -o -name '*.c' -o -name '*.cc')
       - name: Check C++
         run: |
-          cppcheck --force --quiet --error-exitcode=1 .
+          cppcheck --force --quiet --inline-suppr --error-exitcode=1 .
       - name: Lint package.xml
         run: |
           xmllint --noout --schema http://download.ros.org/schema/package_format3.xsd $(find . -name 'package.xml')
@@ -37,8 +37,8 @@ jobs:
     strategy:
       matrix:
         setup:
-          - rosdistro: rolling
-            os: ubuntu-latest
+          - rosdistro: jazzy
+            os: ubuntu-24.04
     steps:
       - name: install build tools
         run: |

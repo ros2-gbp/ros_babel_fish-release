@@ -43,9 +43,8 @@ BabelFishService::BabelFishService( std::shared_ptr<rcl_node_t> node_base,
 
     rclcpp::exceptions::throw_from_rcl_error( ret, "could not create service" );
   }
-  TRACETOOLS_TRACEPOINT( rclcpp_service_callback_added,
-                         static_cast<const void *>( get_service_handle().get() ),
-                         static_cast<const void *>( &callback_ ) );
+  TRACEPOINT( rclcpp_service_callback_added, static_cast<const void *>( get_service_handle().get() ),
+              static_cast<const void *>( &callback_ ) );
 #ifndef TRACETOOLS_DISABLED
   callback_.register_callback_for_tracing();
 #endif
