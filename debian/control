@@ -1,0 +1,13 @@
+Source: ros-jazzy-ros-babel-fish
+Section: misc
+Priority: optional
+Maintainer: Stefan Fabian <ros_babel_fish@stefanfabian.me>
+Build-Depends: debhelper (>= 9.0.0), ros-jazzy-action-tutorials-interfaces, ros-jazzy-ament-cmake, ros-jazzy-ament-cmake-clang-format <!nocheck>, ros-jazzy-ament-cmake-cppcheck <!nocheck>, ros-jazzy-ament-cmake-gtest <!nocheck>, ros-jazzy-ament-index-cpp, ros-jazzy-ament-lint-auto <!nocheck>, ros-jazzy-example-interfaces <!nocheck>, ros-jazzy-geometry-msgs, ros-jazzy-geometry-msgs <!nocheck>, ros-jazzy-rclcpp, ros-jazzy-rclcpp-action, ros-jazzy-rcpputils, ros-jazzy-ros-babel-fish-test-msgs <!nocheck>, ros-jazzy-rosidl-runtime-cpp, ros-jazzy-rosidl-typesupport-cpp, ros-jazzy-rosidl-typesupport-introspection-cpp, ros-jazzy-std-msgs <!nocheck>, ros-jazzy-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-jazzy-ros-babel-fish
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-jazzy-ament-index-cpp, ros-jazzy-rclcpp, ros-jazzy-rclcpp-action, ros-jazzy-rcpputils, ros-jazzy-rosidl-runtime-cpp, ros-jazzy-rosidl-typesupport-cpp, ros-jazzy-rosidl-typesupport-introspection-cpp, ros-jazzy-ros-workspace
+Description: A runtime message handler for ROS.
+ Allows subscription, publishing, calling of services and actions with messages known only at runtime as long as they are available in the local environment.
