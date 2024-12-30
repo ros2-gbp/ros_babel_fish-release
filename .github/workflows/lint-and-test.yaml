@@ -1,16 +1,16 @@
 name: Lint & Test
 on:
   push:
-    branches: [ rolling ]
+    branches: [ humble ]
   pull_request:
-    branches: [ rolling ]
+    branches: [ humble ]
 defaults:
   run:
     shell: bash
 jobs:
   Linting:
     name: Lint Code Base
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -37,8 +37,8 @@ jobs:
     strategy:
       matrix:
         setup:
-          - rosdistro: rolling
-            os: ubuntu-latest
+          - rosdistro: humble
+            os: ubuntu-22.04
     steps:
       - name: install build tools
         run: |
