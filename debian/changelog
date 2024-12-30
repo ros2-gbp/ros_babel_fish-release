@@ -1,0 +1,23 @@
+ros-humble-ros-babel-fish-test-msgs (0.9.6-2jammy) jammy; urgency=high
+
+  * Updated test message and added goal rejected and cancel rejected tests for client.
+  * Contributors: Stefan Fabian
+
+ -- Stefan Fabian <ros_babel_fish@stefanfabian.me>  Mon, 30 Dec 2024 00:00:00 -0000
+
+ros-humble-ros-babel-fish-test-msgs (0.9.4-2jammy) jammy; urgency=high
+
+  * Added missing action_msgs dependency.
+  * Contributors: Stefan Fabian
+
+ -- Stefan Fabian <ros_babel_fish@stefanfabian.me>  Tue, 03 Sep 2024 00:00:00 -0000
+
+ros-humble-ros-babel-fish-test-msgs (0.9.1-2jammy) jammy; urgency=high
+
+  * Updated dependencies.
+  * Renamed package to ros_babel_fish as requested in ros/rosdistro#41540 <https://github.com/ros/rosdistro/issues/41540>
+  * Contributors: Stefan Fabian
+
+ -- Stefan Fabian <ros_babel_fish@stefanfabian.me>  Mon, 02 Sep 2024 00:00:00 -0000
+
+
