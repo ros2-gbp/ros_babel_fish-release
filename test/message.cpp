@@ -285,6 +285,11 @@ TEST( MessageTest, compoundMessage )
   }
   ASSERT_TRUE( shared_pointer_alive );
 
+  // Obtain a known subtype
+  EXPECT_THROW( auto pose = msg->message<geometry_msgs::msg::Pose>(), BabelFishException );
+  EXPECT_NO_THROW( auto pose =
+                       ( *msg )["pose"].as<CompoundMessage>().message<geometry_msgs::msg::Pose>() );
+
   {
     auto pose = ( *msg )["pose"].as<CompoundMessage>();
     msg.reset();
@@ -292,8 +297,15 @@ TEST( MessageTest, compoundMessage )
     EXPECT_EQ( pose["position"]["x"], 1 );
     EXPECT_EQ( pose["position"]["y"], 2 );
   }
-
   ASSERT_FALSE( shared_pointer_alive ) << "Data should be destructed after last reference is gone!";
+
+  // Bug report test
+  {
+    auto test_array = fish.create_message( "ros_babel_fish_test_msgs/msg/TestArray" );
+    auto subarray = fish.create_message( "ros_babel_fish_test_msgs/msg/TestSubArray" );
+    EXPECT_NO_THROW( subarray["floats"].as<FixedLengthArrayMessage<double>>()[0] = 12.3 );
+    EXPECT_NO_THROW( test_array.set<CompoundMessage>( "subarray", subarray ) );
+  }
 }
 
 TEST( MessageTest, arrayMessage )
