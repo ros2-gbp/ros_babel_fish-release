@@ -2,21 +2,26 @@
 Changelog for package ros_babel_fish
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.25.2 (2025-02-07)
+2.25.2 (2025-02-07)
 -------------------
-* Updated docs on template call array bounded / fixed length.
 * Fixed FixedLengthArray assigns in CompoundMessages (`#11 <https://github.com/LOEWE-emergenCITY/ros_babel_fish/issues/11>`_).
 * Use no declaration instead of static assert for compilers that evaluate it even when not used.
 * Added a method to get the actual underlying message from a compound message.
   Usage:
   using geometry_msgs::msg::Point;
   Point point = compound["position"].as<CompoundMessage>().message<Point>();
+* Replaced action_tutorials_interfaces by example_interfaces.
 * Contributors: Stefan Fabian
 
-0.9.6 (2024-12-30)
-------------------
+0.10.3 (2024-12-03)
+-------------------
 * Fixes service server segfaulting (`#10 <https://github.com/LOEWE-emergenCITY/ros_babel_fish/issues/10>`_) and adds a new test to cover this.
 * Added convenience methods to get and set values of compound messages.
+* Updated export of cmake variables.
+* Contributors: Stefan Fabian
+
+0.10.0 (2024-10-25)
+-------------------
 * Add ActionServer (`#9 <https://github.com/LOEWE-emergenCITY/ros_babel_fish/issues/9>`_)
   * More verbose error message when trying to assign a value to a CompoundMessage.
   * Moved BabelFishAction definition to separate header in preparation for BabelFishActionServer.
@@ -28,16 +33,15 @@ Changelog for package ros_babel_fish
 * Added more method documentation.
 * Added convenience methods to create empty action goals with BabelFish.
 * Improved exceptions in type support loading.
-* Updated export of cmake variables.
 * Contributors: Stefan Fabian
 
-0.9.4 (2024-09-03)
-------------------
-
-0.9.1 (2024-09-02)
+0.9.3 (2024-08-16)
 ------------------
 * Updated dependencies.
-* Added missing test depend and configured ament_cmake_clang_format.
-* Formatting.
-* Renamed package to ros_babel_fish as requested in `ros/rosdistro#41540 <https://github.com/ros/rosdistro/issues/41540>`_
+  Removed test node. Examples serve the purpose.
+* Contributors: Stefan Fabian
+
+0.9.2 (2024-08-14)
+------------------
+* Initial release.
 * Contributors: Stefan Fabian
