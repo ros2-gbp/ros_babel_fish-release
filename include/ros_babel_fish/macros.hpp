@@ -379,7 +379,8 @@
  * fn( array, ... )
  * where array can be ::ros_babel_fish::ArrayMessage_<T, BOUNDED, FIXED_LENGTH>
  *   or ::ros_babel_fish::CompoundArrayMessage_<BOUNDED, FIXED_LENGTH>
- * and BOUNDED, FIXED_LENGTH are booleans indicating whether the array is bounded or fixed_length (which implies bounded).
+ * and BOUNDED, FIXED_LENGTH are booleans indicating whether the array is bounded or fixed_length.
+ * Note that either BOUNDED or FIXED_LENGTH is true, but not both.
  */
 #define RBF2_TEMPLATE_CALL_ARRAY_TYPES( FUNCTION, ARRAY, ... )                                          \
   do {                                                                                                  \
@@ -388,7 +389,7 @@
                        std::remove_const<std::remove_reference<decltype( ARRAY )>::type>::type>::value, \
         "Second argument to macro needs to be of type ArrayMessageBase!" );                             \
     if ( ( ARRAY ).isFixedSize() ) {                                                                    \
-      _RBF2_TEMPLATE_CALL_ARRAY_TYPES( FUNCTION, ( ARRAY ), true, true, __VA_ARGS__ )                   \
+      _RBF2_TEMPLATE_CALL_ARRAY_TYPES( FUNCTION, ( ARRAY ), false, true, __VA_ARGS__ )                  \
     } else if ( ( ARRAY ).isBounded() ) {                                                               \
       _RBF2_TEMPLATE_CALL_ARRAY_TYPES( FUNCTION, ( ARRAY ), true, false, __VA_ARGS__ )                  \
     } else {                                                                                            \

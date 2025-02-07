@@ -17,6 +17,7 @@ endif ()
 
 find_package(ament_cmake REQUIRED)
 find_package(ament_index_cpp REQUIRED)
+find_package(geometry_msgs REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(rclcpp_action REQUIRED)
 find_package(rcpputils REQUIRED)
@@ -69,6 +70,7 @@ target_include_directories(any_subscriber PRIVATE
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>
 )
+ament_target_dependencies(any_subscriber geometry_msgs)
 
 add_executable(troll_node examples/troll_node.cpp)
 target_link_libraries(troll_node ${PROJECT_NAME})
@@ -137,7 +139,6 @@ if (BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 
   find_package(ament_cmake_gtest REQUIRED)
-  find_package(action_tutorials_interfaces REQUIRED)
   find_package(example_interfaces REQUIRED)
   find_package(geometry_msgs REQUIRED)
   find_package(ros_babel_fish_test_msgs REQUIRED)
@@ -160,7 +161,7 @@ if (BUILD_TESTING)
   target_link_libraries(test_service ${PROJECT_NAME})
 
   ament_add_gtest(test_action_client test/action_client.cpp)
-  ament_target_dependencies(test_action_client action_tutorials_interfaces example_interfaces ros_babel_fish_test_msgs)
+  ament_target_dependencies(test_action_client example_interfaces ros_babel_fish_test_msgs)
   target_link_libraries(test_action_client ${PROJECT_NAME})
 
   ament_add_gtest(test_action_server test/action_server.cpp)
