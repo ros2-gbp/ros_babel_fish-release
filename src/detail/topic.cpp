@@ -3,10 +3,14 @@
 //
 
 #include "ros_babel_fish/detail/topic.hpp"
+#include "../logging.hpp"
 
 #include <rclcpp/graph_listener.hpp>
 #include <rclcpp/node.hpp>
+#include <rclcpp/node_interfaces/get_node_topics_interface.hpp>
 #include <rclcpp/wait_set.hpp>
+
+using namespace std::chrono_literals;
 
 namespace ros_babel_fish
 {
@@ -14,11 +18,13 @@ namespace impl
 {
 namespace
 {
-bool has_topic( const rclcpp::Node &node, const std::string &topic, std::vector<std::string> &types )
+bool has_topic( rclcpp::Node &node, const std::string &topic, std::vector<std::string> &types )
 {
   const std::map<std::string, std::vector<std::string>> &topics = node.get_topic_names_and_types();
-  auto it = std::find_if( topics.begin(), topics.end(),
-                          [&topic]( const auto &entry ) { return entry.first == topic; } );
+  const std::string &resolved_topic = node.get_node_topics_interface()->resolve_topic_name( topic );
+  auto it = std::find_if( topics.begin(), topics.end(), [&resolved_topic]( const auto &entry ) {
+    return entry.first == resolved_topic;
+  } );
   if ( it == topics.end() )
     return false;
   types = it->second;
@@ -67,6 +73,12 @@ bool wait_for_topic_and_type_nanoseconds( rclcpp::Node &node, const std::string 
     // topic not available, wait if a timeout was specified
     if ( timeout > std::chrono::nanoseconds( 0 ) ) {
       time_to_wait = timeout - ( std::chrono::steady_clock::now() - start );
+    }
+    if ( std::chrono::steady_clock::now() - start > 3s ) {
+      RBF2_WARN_THROTTLE(
+          *node.get_clock(), 3000,
+          "Still waiting for topic '%s' to appear (timeout=%ld). Are you spinning the node?",
+          topic.c_str(), timeout.count() );
     }
   } while ( time_to_wait > std::chrono::nanoseconds( 0 ) );
   return false; // timeout exceeded while waiting for the topic
