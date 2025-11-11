@@ -2,6 +2,9 @@
 Changelog for package ros_babel_fish_test_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.25.11 (2025-11-11)
+--------------------
+
 2.25.2 (2025-02-07)
 -------------------
 * Fixed FixedLengthArray assigns in CompoundMessages (`#11 <https://github.com/LOEWE-emergenCITY/ros_babel_fish/issues/11>`_).
