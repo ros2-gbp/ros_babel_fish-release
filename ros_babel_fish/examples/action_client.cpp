@@ -33,7 +33,7 @@ int main( int argc, char **argv )
               nullptr, // We handle the goal response using the future
               []( BabelFishActionClient::GoalHandle::SharedPtr,
                   const CompoundMessage::ConstSharedPtr msg ) -> void {
-                const auto &sequence = ( *msg )["partial_sequence"].as<ArrayMessage<int32_t>>();
+                const auto &sequence = ( *msg )["sequence"].as<ArrayMessage<int32_t>>();
                 std::cout << "Feedback is an array of length:" << sequence.size() << std::endl;
                 for ( size_t i = 0; i < sequence.size(); ++i ) {
                   std::cout << sequence[i];
