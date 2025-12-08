@@ -2,28 +2,21 @@
 Changelog for package ros_babel_fish
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-3.25.111 (2025-11-30)
+0.25.120 (2025-12-08)
 ---------------------
 * Wrap exceptions when creating service or action client with invalid topic as BabelFishException.
 * Fixed ament package not found error not being caught and wrapped as TypeSupportException / BabelFishException.
 * Added a get method for CompoundArrayMessage to obtain element as shared_ptr.
-* Contributors: Stefan Fabian
-
-3.25.11 (2025-11-11)
---------------------
 * Added documentation and fixed tiny memory leak.
 * Added convenience methods to message introspection wrapper.
 * Fixed waiting indefinitely if topic is namespaced and added test case.
 * Print warning when waiting for more than 3 seconds for topic.
-* Updated CMake project version.
 * Contributors: Stefan Fabian
 
-3.25.2 (2025-02-07)
+0.25.2 (2025-02-07)
 -------------------
-* Refactored array size templating and improved compile time checks by moving checks to constexpr.
-  Fixes (`#11 <https://github.com/LOEWE-emergenCITY/ros_babel_fish/issues/11>`_).
-  This reduces the potential for errors and allows easier compile time checking.
-  Many checks are also moved to constexpr and static assertions catching common errors at compile time instead of run time.
+* Updated docs on template call array bounded / fixed length.
+* Fixed FixedLengthArray assigns in CompoundMessages (`#11 <https://github.com/LOEWE-emergenCITY/ros_babel_fish/issues/11>`_).
 * Use no declaration instead of static assert for compilers that evaluate it even when not used.
 * Added a method to get the actual underlying message from a compound message.
   Usage:
@@ -31,15 +24,10 @@ Changelog for package ros_babel_fish
   Point point = compound["position"].as<CompoundMessage>().message<Point>();
 * Contributors: Stefan Fabian
 
-0.10.2 (2024-12-03)
--------------------
+0.9.6 (2024-12-30)
+------------------
 * Fixes service server segfaulting (`#10 <https://github.com/LOEWE-emergenCITY/ros_babel_fish/issues/10>`_) and adds a new test to cover this.
 * Added convenience methods to get and set values of compound messages.
-* Updated export of cmake variables.
-* Contributors: Stefan Fabian
-
-0.10.1 (2024-10-25)
--------------------
 * Add ActionServer (`#9 <https://github.com/LOEWE-emergenCITY/ros_babel_fish/issues/9>`_)
   * More verbose error message when trying to assign a value to a CompoundMessage.
   * Moved BabelFishAction definition to separate header in preparation for BabelFishActionServer.
@@ -51,30 +39,16 @@ Changelog for package ros_babel_fish
 * Added more method documentation.
 * Added convenience methods to create empty action goals with BabelFish.
 * Improved exceptions in type support loading.
+* Updated export of cmake variables.
 * Contributors: Stefan Fabian
 
-0.9.5 (2024-10-11)
+0.9.4 (2024-09-03)
 ------------------
-* Fixes to compile on Rolling. (`#8 <https://github.com/LOEWE-emergenCITY/ros_babel_fish/issues/8>`_)
-  * Fixes to compile on Rolling.
-  ROS 2 Rolling has made two changes that cause this package
-  to not build in its current form:
-  1. The TRACEPOINT macro has been renamed to TRACETOOLS_TRACEPOINT.
-  2. The action_tutorials_interface package has been removed,
-  since it was duplicating an action that was already available
-  in example_interfaces.
-  This commit fixes both of these issues.
-  ---------
-  Co-authored-by: Stefan Fabian <fabian@sim.tu-darmstadt.de>
-* Contributors: Chris Lalancette
 
-0.9.3 (2024-08-16)
+0.9.1 (2024-09-02)
 ------------------
 * Updated dependencies.
-  Removed test node. Examples serve the purpose.
-* Contributors: Stefan Fabian
-
-0.9.2 (2024-08-14)
-------------------
-* Initial release.
+* Added missing test depend and configured ament_cmake_clang_format.
+* Formatting.
+* Renamed package to ros_babel_fish as requested in `ros/rosdistro#41540 <https://github.com/ros/rosdistro/issues/41540>`_
 * Contributors: Stefan Fabian
