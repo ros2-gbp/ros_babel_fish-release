@@ -2,6 +2,11 @@
 Changelog for package ros_babel_fish
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+3.26.31 (2026-03-10)
+--------------------
+* Fixed rolling deprecation warnings.
+* Contributors: Stefan Fabian
+
 3.25.111 (2025-11-30)
 ---------------------
 * Wrap exceptions when creating service or action client with invalid topic as BabelFishException.
