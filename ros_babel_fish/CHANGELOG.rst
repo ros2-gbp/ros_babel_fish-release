@@ -2,9 +2,8 @@
 Changelog for package ros_babel_fish
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-3.26.30 (2026-03-09)
+3.26.31 (2026-03-10)
 --------------------
-* Updated rolling deprecated get_package_prefix.
 * Fixed rolling deprecation warnings.
 * Contributors: Stefan Fabian
 
