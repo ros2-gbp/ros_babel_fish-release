@@ -2,8 +2,18 @@
 Changelog for package ros_babel_fish
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-3.26.31 (2026-03-10)
+4.26.40 (2026-04-08)
 --------------------
+* Sync with rolling before Lyrical release. (`#18 <https://github.com/LOEWE-emergenCITY/ros_babel_fish/issues/18>`_)
+  * Synced with rolling implementation of communication interfaces to preserve full compatibility and fix latest breaking change.
+  * Updated CI, added pre-commit config and formatting.
+  * Fix clang-format version used to 20.
+  * Use testing sources in CI.
+* Contributors: Stefan Fabian
+
+3.26.30 (2026-03-09)
+--------------------
+* Updated rolling deprecated get_package_prefix.
 * Fixed rolling deprecation warnings.
 * Contributors: Stefan Fabian
 
