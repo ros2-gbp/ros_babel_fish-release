@@ -1,0 +1,13 @@
+Source: ros-kilted-ros-babel-fish-tools
+Section: misc
+Priority: optional
+Maintainer: Stefan Fabian <ros_babel_fish@stefanfabian.me>
+Build-Depends: debhelper (>= 9.0.0), ros-kilted-ament-cmake, ros-kilted-ament-cmake-gtest <!nocheck>, ros-kilted-geometry-msgs <!nocheck>, ros-kilted-rclcpp, ros-kilted-ros-babel-fish, ros-kilted-ros-babel-fish-test-msgs <!nocheck>, ros-kilted-std-msgs <!nocheck>, ros-kilted-yaml-cpp-vendor, ros-kilted-ros-workspace
+Homepage: https://github.com/StefanFabian/ros_babel_fish
+Standards-Version: 3.9.2
+
+Package: ros-kilted-ros-babel-fish-tools
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-kilted-rclcpp, ros-kilted-ros-babel-fish, ros-kilted-yaml-cpp-vendor, ros-kilted-ros-workspace
+Description: Tooling for ROS 2 built on ros_babel_fish.
+ Provides header-only JSON and YAML serialization for dynamic messages and a CLI tool to echo topics.

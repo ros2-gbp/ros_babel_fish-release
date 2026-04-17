@@ -1,0 +1,9 @@
+ros-kilted-ros-babel-fish-tools (3.26.40-1bookworm) bookworm; urgency=high
+
+  * Added conversion to YAML, JSON and an echo node as example. (#22 <https://github.com/LOEWE-emergenCITY/ros_babel_fish/issues/22>)
+    * Added conversion to YAML, JSON and an echo node as example.
+  * Contributors: Stefan Fabian
+
+ -- Stefan Fabian <ros_babel_fish@stefanfabian.me>  Fri, 17 Apr 2026 00:00:00 -0000
+
+
