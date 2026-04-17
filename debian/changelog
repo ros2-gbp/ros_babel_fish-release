@@ -1,0 +1,89 @@
+ros-jazzy-ros-babel-fish (2.26.40-1noble) noble; urgency=high
+
+  * [Backport jazzy] Added conversion to YAML, JSON and an echo node as example. (#17 <https://github.com/LOEWE-emergenCITY/ros_babel_fish/issues/17>)
+    * Changes from #16 <https://github.com/LOEWE-emergenCITY/ros_babel_fish/issues/16>.
+    * Changes for jazzy compatibility.
+  * Add a deserialize method to Subscription (#19 <https://github.com/LOEWE-emergenCITY/ros_babel_fish/issues/19>)
+    * Add a deserialize method to Subscription to enable users to use a SerializedMessage and deserialize later.
+    * Catch exceptions when deserializing.
+  * Fix MSVC build error: std::array size exceeds 32-bit limit (#14 <https://github.com/LOEWE-emergenCITY/ros_babel_fish/issues/14>)
+    * Fix MSVC build error: reduce std::array placeholder size to comply with 32-bit limit
+  * Contributors: Stefan Fabian
+
+ -- Stefan Fabian <ros_babel_fish@stefanfabian.me>  Fri, 17 Apr 2026 00:00:00 -0000
+
+ros-jazzy-ros-babel-fish (2.25.111-1noble) noble; urgency=high
+
+  * Wrap exceptions when creating service or action client with invalid topic as BabelFishException.
+  * Fixed ament package not found error not being caught and wrapped as TypeSupportException / BabelFishException.
+  * Added a get method for CompoundArrayMessage to obtain element as shared_ptr.
+  * Contributors: Stefan Fabian
+
+ -- Stefan Fabian <ros_babel_fish@stefanfabian.me>  Sun, 30 Nov 2025 00:00:00 -0000
+
+ros-jazzy-ros-babel-fish (2.25.11-1noble) noble; urgency=high
+
+  * Added documentation and fixed tiny memory leak.
+  * Added convenience methods to message introspection wrapper.
+  * Fixed waiting indefinitely if topic is namespaced and added test case.
+  * Print warning when waiting for more than 3 seconds for topic.
+  * Updated CMake project version.
+  * Contributors: Stefan Fabian
+
+ -- Stefan Fabian <ros_babel_fish@stefanfabian.me>  Tue, 11 Nov 2025 00:00:00 -0000
+
+ros-jazzy-ros-babel-fish (2.25.2-1noble) noble; urgency=high
+
+  * Fixed FixedLengthArray assigns in CompoundMessages (#11 <https://github.com/LOEWE-emergenCITY/ros_babel_fish/issues/11>).
+  * Use no declaration instead of static assert for compilers that evaluate it even when not used.
+  * Added a method to get the actual underlying message from a compound message.
+    Usage:
+    using geometry_msgs::msg::Point;
+    Point point = compound["position"].as<CompoundMessage>().message<Point>();
+  * Replaced action_tutorials_interfaces by example_interfaces.
+  * Contributors: Stefan Fabian
+
+ -- Stefan Fabian <ros_babel_fish@stefanfabian.me>  Fri, 07 Feb 2025 00:00:00 -0000
+
+ros-jazzy-ros-babel-fish (0.10.3-1noble) noble; urgency=high
+
+  * Fixes service server segfaulting (#10 <https://github.com/LOEWE-emergenCITY/ros_babel_fish/issues/10>) and adds a new test to cover this.
+  * Added convenience methods to get and set values of compound messages.
+  * Updated export of cmake variables.
+  * Contributors: Stefan Fabian
+
+ -- Stefan Fabian <ros_babel_fish@stefanfabian.me>  Tue, 03 Dec 2024 00:00:00 -0000
+
+ros-jazzy-ros-babel-fish (0.10.0-1noble) noble; urgency=high
+
+  * Add ActionServer (#9 <https://github.com/LOEWE-emergenCITY/ros_babel_fish/issues/9>)
+    * More verbose error message when trying to assign a value to a CompoundMessage.
+    * Moved BabelFishAction definition to separate header in preparation for BabelFishActionServer.
+    * Added BabelFishActionServer with tests.
+    * Suppress false positive in cppcheck.
+    * Enable inline suppression in cppcheck.
+  * Updated test message and added goal rejected and cancel rejected tests for client.
+  * Refactored action client and added new tests.
+  * Added more method documentation.
+  * Added convenience methods to create empty action goals with BabelFish.
+  * Improved exceptions in type support loading.
+  * Contributors: Stefan Fabian
+
+ -- Stefan Fabian <ros_babel_fish@stefanfabian.me>  Fri, 25 Oct 2024 00:00:00 -0000
+
+ros-jazzy-ros-babel-fish (0.9.3-1noble) noble; urgency=high
+
+  * Updated dependencies.
+    Removed test node. Examples serve the purpose.
+  * Contributors: Stefan Fabian
+
+ -- Stefan Fabian <ros_babel_fish@stefanfabian.me>  Fri, 16 Aug 2024 00:00:00 -0000
+
+ros-jazzy-ros-babel-fish (0.9.2-1noble) noble; urgency=high
+
+  * Initial release.
+  * Contributors: Stefan Fabian
+
+ -- Stefan Fabian <ros_babel_fish@stefanfabian.me>  Wed, 14 Aug 2024 00:00:00 -0000
+
+
