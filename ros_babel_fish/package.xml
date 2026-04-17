@@ -2,7 +2,7 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>ros_babel_fish</name>
-  <version>4.26.41</version>
+  <version>3.26.40</version>
   <description>
     A runtime message handler for ROS.
     Allows subscription, publishing, calling of services and actions with messages known only at runtime as long
@@ -25,6 +25,9 @@
   <depend>rosidl_typesupport_introspection_cpp</depend>
   <build_depend>example_interfaces</build_depend>
   <test_depend>ament_cmake_gtest</test_depend>
+  <test_depend>ament_cmake_clang_format</test_depend>
+  <test_depend>ament_cmake_cppcheck</test_depend>
+  <test_depend>ament_lint_auto</test_depend>
   <test_depend>geometry_msgs</test_depend>
   <test_depend>ros_babel_fish_test_msgs</test_depend>
   <test_depend>std_msgs</test_depend>
