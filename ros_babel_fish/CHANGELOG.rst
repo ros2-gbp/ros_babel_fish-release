@@ -2,29 +2,26 @@
 Changelog for package ros_babel_fish
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-3.26.40 (2026-04-17)
+2.26.40 (2026-04-17)
 --------------------
-* Reduce array size to prevent compile errors on MSVC.
-* Added conversion to YAML, JSON and an echo node as example. (`#22 <https://github.com/LOEWE-emergenCITY/ros_babel_fish/issues/22>`_)
-  * Added conversion to YAML, JSON and an echo node as example.
+* [Backport jazzy] Added conversion to YAML, JSON and an echo node as example. (`#17 <https://github.com/LOEWE-emergenCITY/ros_babel_fish/issues/17>`_)
+  * Changes from `#16 <https://github.com/LOEWE-emergenCITY/ros_babel_fish/issues/16>`_.
+  * Changes for jazzy compatibility.
 * Add a deserialize method to Subscription (`#19 <https://github.com/LOEWE-emergenCITY/ros_babel_fish/issues/19>`_)
   * Add a deserialize method to Subscription to enable users to use a SerializedMessage and deserialize later.
   * Catch exceptions when deserializing.
+* Fix MSVC build error: std::array size exceeds 32-bit limit (`#14 <https://github.com/LOEWE-emergenCITY/ros_babel_fish/issues/14>`_)
+  * Fix MSVC build error: reduce std::array placeholder size to comply with 32-bit limit
 * Contributors: Stefan Fabian
 
-3.26.31 (2026-03-10)
---------------------
-* Fixed rolling deprecation warnings.
-* Contributors: Stefan Fabian
-
-3.25.111 (2025-11-30)
+2.25.111 (2025-11-30)
 ---------------------
 * Wrap exceptions when creating service or action client with invalid topic as BabelFishException.
 * Fixed ament package not found error not being caught and wrapped as TypeSupportException / BabelFishException.
 * Added a get method for CompoundArrayMessage to obtain element as shared_ptr.
 * Contributors: Stefan Fabian
 
-3.25.11 (2025-11-11)
+2.25.11 (2025-11-11)
 --------------------
 * Added documentation and fixed tiny memory leak.
 * Added convenience methods to message introspection wrapper.
@@ -33,27 +30,25 @@ Changelog for package ros_babel_fish
 * Updated CMake project version.
 * Contributors: Stefan Fabian
 
-3.25.2 (2025-02-07)
+2.25.2 (2025-02-07)
 -------------------
-* Refactored array size templating and improved compile time checks by moving checks to constexpr.
-  Fixes (`#11 <https://github.com/LOEWE-emergenCITY/ros_babel_fish/issues/11>`_).
-  This reduces the potential for errors and allows easier compile time checking.
-  Many checks are also moved to constexpr and static assertions catching common errors at compile time instead of run time.
+* Fixed FixedLengthArray assigns in CompoundMessages (`#11 <https://github.com/LOEWE-emergenCITY/ros_babel_fish/issues/11>`_).
 * Use no declaration instead of static assert for compilers that evaluate it even when not used.
 * Added a method to get the actual underlying message from a compound message.
   Usage:
   using geometry_msgs::msg::Point;
   Point point = compound["position"].as<CompoundMessage>().message<Point>();
+* Replaced action_tutorials_interfaces by example_interfaces.
 * Contributors: Stefan Fabian
 
-0.10.2 (2024-12-03)
+0.10.3 (2024-12-03)
 -------------------
 * Fixes service server segfaulting (`#10 <https://github.com/LOEWE-emergenCITY/ros_babel_fish/issues/10>`_) and adds a new test to cover this.
 * Added convenience methods to get and set values of compound messages.
 * Updated export of cmake variables.
 * Contributors: Stefan Fabian
 
-0.10.1 (2024-10-25)
+0.10.0 (2024-10-25)
 -------------------
 * Add ActionServer (`#9 <https://github.com/LOEWE-emergenCITY/ros_babel_fish/issues/9>`_)
   * More verbose error message when trying to assign a value to a CompoundMessage.
@@ -67,21 +62,6 @@ Changelog for package ros_babel_fish
 * Added convenience methods to create empty action goals with BabelFish.
 * Improved exceptions in type support loading.
 * Contributors: Stefan Fabian
-
-0.9.5 (2024-10-11)
-------------------
-* Fixes to compile on Rolling. (`#8 <https://github.com/LOEWE-emergenCITY/ros_babel_fish/issues/8>`_)
-  * Fixes to compile on Rolling.
-  ROS 2 Rolling has made two changes that cause this package
-  to not build in its current form:
-  1. The TRACEPOINT macro has been renamed to TRACETOOLS_TRACEPOINT.
-  2. The action_tutorials_interface package has been removed,
-  since it was duplicating an action that was already available
-  in example_interfaces.
-  This commit fixes both of these issues.
-  ---------
-  Co-authored-by: Stefan Fabian <fabian@sim.tu-darmstadt.de>
-* Contributors: Chris Lalancette
 
 0.9.3 (2024-08-16)
 ------------------

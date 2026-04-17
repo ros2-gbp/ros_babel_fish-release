@@ -136,24 +136,29 @@ std::string song_text[song_text_length] = {
 int song_text_index = 0;
 
 struct ArrayProcessor {
-  template<ArraySize SIZE>
-  void operator()( CompoundArrayMessage_<SIZE> &array )
+  template<bool BOUNDED, bool FIXED_LENGTH>
+  void operator()( CompoundArrayMessage_<BOUNDED, FIXED_LENGTH> &array )
   {
     for ( size_t i = 0; i < array.size(); ++i ) { updateMessage( array[i] ); }
   }
 
-  template<typename T, ArraySize SIZE>
-  void operator()( ArrayMessage_<T, SIZE> &array )
+  template<typename T, bool B, bool FL>
+  typename std::enable_if<!std::is_same<T, std::string>::value, void>::type
+  operator()( ArrayMessage_<T, B, FL> & )
   {
-    if constexpr ( std::is_same_v<T, std::string> ) {
-      for ( size_t i = 0; i < array.size(); ++i ) {
-        array.assign( i, song_text[song_text_index] );
-        ++song_text_index;
-        if ( song_text_index >= song_text_length )
-          song_text_index = 0;
-      }
-    }
     // Do nothing for non-string arrays
+  }
+
+  template<typename T, bool B, bool FL>
+  typename std::enable_if<std::is_same<T, std::string>::value, void>::type
+  operator()( ArrayMessage_<T, B, FL> &array )
+  {
+    for ( size_t i = 0; i < array.size(); ++i ) {
+      array.assign( i, song_text[song_text_index] );
+      ++song_text_index;
+      if ( song_text_index >= song_text_length )
+        song_text_index = 0;
+    }
   }
 };
 
