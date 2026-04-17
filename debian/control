@@ -1,0 +1,13 @@
+Source: ros-jazzy-ros-babel-fish-tools
+Section: misc
+Priority: optional
+Maintainer: Stefan Fabian <ros_babel_fish@stefanfabian.me>
+Build-Depends: debhelper (>= 9.0.0), ros-jazzy-ament-cmake, ros-jazzy-ament-cmake-gtest <!nocheck>, ros-jazzy-geometry-msgs <!nocheck>, ros-jazzy-rclcpp, ros-jazzy-ros-babel-fish, ros-jazzy-ros-babel-fish-test-msgs <!nocheck>, ros-jazzy-std-msgs <!nocheck>, ros-jazzy-yaml-cpp-vendor, ros-jazzy-ros-workspace
+Homepage: https://github.com/StefanFabian/ros_babel_fish
+Standards-Version: 3.9.2
+
+Package: ros-jazzy-ros-babel-fish-tools
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-jazzy-rclcpp, ros-jazzy-ros-babel-fish, ros-jazzy-yaml-cpp-vendor, ros-jazzy-ros-workspace
+Description: Tooling for ROS 2 built on ros_babel_fish.
+ Provides header-only JSON and YAML serialization for dynamic messages and a CLI tool to echo topics.

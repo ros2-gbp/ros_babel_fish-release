@@ -1,0 +1,10 @@
+ros-jazzy-ros-babel-fish-tools (2.26.40-1noble) noble; urgency=high
+
+  * [Backport jazzy] Added conversion to YAML, JSON and an echo node as example. (#17 <https://github.com/LOEWE-emergenCITY/ros_babel_fish/issues/17>)
+    * Changes from #16 <https://github.com/LOEWE-emergenCITY/ros_babel_fish/issues/16>.
+    * Changes for jazzy compatibility.
+  * Contributors: Stefan Fabian
+
+ -- Stefan Fabian <ros_babel_fish@stefanfabian.me>  Fri, 17 Apr 2026 00:00:00 -0000
+
+
