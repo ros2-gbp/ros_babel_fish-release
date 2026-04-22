@@ -34,10 +34,11 @@ BabelFishSubscription::BabelFishSubscription(
     this->subscription_topic_statistics_ = std::move( subscription_topic_statistics );
   }
 
-  TRACEPOINT( rclcpp_subscription_init, static_cast<const void *>( get_subscription_handle().get() ),
-              static_cast<const void *>( this ) );
-  TRACEPOINT( rclcpp_subscription_callback_added, static_cast<const void *>( this ),
-              static_cast<const void *>( &callback_ ) );
+  TRACETOOLS_TRACEPOINT( rclcpp_subscription_init,
+                         static_cast<const void *>( get_subscription_handle().get() ),
+                         static_cast<const void *>( this ) );
+  TRACETOOLS_TRACEPOINT( rclcpp_subscription_callback_added, static_cast<const void *>( this ),
+                         static_cast<const void *>( &callback_ ) );
   // The callback object gets copied, so if registration is done too early/before this point
   // (e.g. in `AnySubscriptionCallback::set()`), its address won't match any address used later
   // in subsequent tracepoints.
@@ -109,11 +110,7 @@ void BabelFishSubscription::handle_loaned_message( void *loaned_message,
   (void)message_info;
 }
 
-void BabelFishSubscription::return_message( std::shared_ptr<void> &message )
-{
-  auto typed_message = std::static_pointer_cast<rclcpp::SerializedMessage>( message );
-  return_serialized_message( typed_message );
-}
+void BabelFishSubscription::return_message( std::shared_ptr<void> &message ) { message.reset(); }
 
 void BabelFishSubscription::return_serialized_message( std::shared_ptr<rclcpp::SerializedMessage> &message )
 {

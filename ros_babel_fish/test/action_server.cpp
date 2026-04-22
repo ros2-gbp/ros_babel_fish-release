@@ -167,13 +167,10 @@ int main( int argc, char **argv )
   testing::InitGoogleTest( &argc, argv );
   rclcpp::init( argc, argv );
   node = std::make_shared<rclcpp::Node>( "action_server_test" );
-  rclcpp::executors::SingleThreadedExecutor executor;
-  executor.add_node( node );
-  std::thread spinner( [&executor]() { executor.spin(); } );
+  std::thread spinner( []() { rclcpp::spin( node ); } );
   int result = RUN_ALL_TESTS();
-  executor.cancel();
+  rclcpp::shutdown();
   spinner.join();
   node.reset();
-  rclcpp::shutdown();
   return result;
 }

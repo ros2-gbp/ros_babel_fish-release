@@ -50,15 +50,14 @@ inline std::wstring utf8_to_wstring( std::string const &str )
 template<typename T>
 struct is_compound_array_message : std::false_type {
 };
-template<bool BOUNDED, bool FIXED_LENGTH>
-struct is_compound_array_message<ros_babel_fish::CompoundArrayMessage_<BOUNDED, FIXED_LENGTH>>
-    : std::true_type {
+template<ros_babel_fish::ArraySize SIZE>
+struct is_compound_array_message<ros_babel_fish::CompoundArrayMessage_<SIZE>> : std::true_type {
 };
 
 template<typename T>
 struct array_element_type;
-template<typename T, bool BOUNDED, bool FIXED_LENGTH>
-struct array_element_type<ros_babel_fish::ArrayMessage_<T, BOUNDED, FIXED_LENGTH>> {
+template<typename T, ros_babel_fish::ArraySize SIZE>
+struct array_element_type<ros_babel_fish::ArrayMessage_<T, SIZE>> {
   using type = T;
 };
 

@@ -18,9 +18,10 @@ Client<ros_babel_fish::impl::BabelFishAction>::Client(
     rclcpp::node_interfaces::NodeGraphInterface::SharedPtr node_graph,
     rclcpp::node_interfaces::NodeLoggingInterface::SharedPtr node_logging,
     const std::string &action_name, ros_babel_fish::ActionTypeSupport::ConstSharedPtr type_support,
-    const rcl_action_client_options_t &client_options )
+    const rcl_action_client_options_t &client_options, bool enable_feedback_msg_optimization )
     : ClientBase( node_base, node_graph, node_logging, action_name,
-                  &type_support->type_support_handle, client_options ),
+                  &type_support->type_support_handle, client_options,
+                  enable_feedback_msg_optimization ),
       type_support_( std::move( type_support ) )
 {
 }
@@ -134,6 +135,36 @@ Client<impl::BabelFishAction>::async_cancel_goals_before( const rclcpp::Time &st
   cancel_request["goal_info"]["goal_id"]["uuid"].as<FixedLengthArrayMessage<uint8_t>>().fill( 0u );
   cancel_request["goal_info"]["stamp"] = stamp;
   return async_cancel( cancel_request, cancel_callback );
+}
+
+void Client<impl::BabelFishAction>::stop_callbacks( typename GoalHandle::SharedPtr goal_handle )
+{
+  goal_handle->set_feedback_callback( FeedbackCallback() );
+  goal_handle->set_result_callback( ResultCallback() );
+
+  std::lock_guard guard( goal_handles_mutex_ );
+  const GoalUUID &goal_id = goal_handle->get_goal_id();
+  auto it = goal_handles_.find( goal_id );
+  if ( goal_handles_.end() == it ) {
+    return;
+  }
+  goal_handles_.erase( it );
+}
+
+void Client<impl::BabelFishAction>::stop_callbacks( const GoalUUID &goal_id )
+{
+  GoalHandle::SharedPtr goal_handle;
+  {
+    std::lock_guard guard( goal_handles_mutex_ );
+    auto it = goal_handles_.find( goal_id );
+    if ( goal_handles_.end() == it ) {
+      return;
+    }
+    goal_handle = it->second.lock();
+  }
+  if ( goal_handle ) {
+    stop_callbacks( goal_handle );
+  }
 }
 
 std::shared_future<ros_babel_fish::CompoundMessage>

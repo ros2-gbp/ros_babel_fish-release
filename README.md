@@ -18,7 +18,7 @@ Possible use cases where you do need it are:
 * Serialization and Deserialization from and to JSON and YAML (see [Serialization](#serialization))
 
 > [!NOTE]
-> **Spot for shameless self-advertising**
+> **Spot for shameless self-advertising**  
 > Check out my [QML ROS2 plugin](https://github.com/StefanFabian/qml_ros2_plugin) and [QML6 ROS2 plugin](https://github.com/StefanFabian/qml6_ros2_plugin) which use this library to allow subscribing, publishing and more directly in QML.
 > The latter is the basis for [RQml](https://github.com/StefanFabian/rqml).
 
