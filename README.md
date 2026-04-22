@@ -1,3 +1,29 @@
+## ros_babel_fish (rolling) - 4.26.42-1
+
+The packages in the `ros_babel_fish` repository were released into the `rolling` distro by running `/usr/bin/bloom-release --rosdistro rolling ros_babel_fish` on `Wed, 22 Apr 2026 09:50:01 -0000`
+
+These packages were released:
+- `ros_babel_fish`
+- `ros_babel_fish_test_msgs`
+- `ros_babel_fish_tools`
+
+Version of package(s) in repository `ros_babel_fish`:
+
+- upstream repository: https://github.com/LOEWE-emergenCITY/ros_babel_fish.git
+- release repository: https://github.com/ros2-gbp/ros_babel_fish-release.git
+- rosdistro version: `4.26.41-1`
+- old version: `4.26.41-1`
+- new version: `4.26.42-1`
+
+Versions of tools used:
+
+- bloom version: `0.14.2`
+- catkin_pkg version: `1.1.0`
+- rosdep version: `0.26.0`
+- rosdistro version: `1.0.1`
+- vcstools version: `0.1.42`
+
+
 ## ros_babel_fish (jazzy) - 2.26.40-1
 
 The packages in the `ros_babel_fish` repository were released into the `jazzy` distro by running `/usr/bin/bloom-release --rosdistro jazzy ros_babel_fish` on `Fri, 17 Apr 2026 18:49:12 -0000`
