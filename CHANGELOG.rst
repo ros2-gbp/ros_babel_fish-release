@@ -2,6 +2,11 @@
 Changelog for package ros_babel_fish
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+4.26.43 (2026-04-23)
+--------------------
+* C++20 compatibility.
+* Contributors: Stefan Fabian
+
 4.26.42 (2026-04-22)
 --------------------
 * ActionClient: Added enable_feedback_msg_optimization option to conform to new rolling interface.
