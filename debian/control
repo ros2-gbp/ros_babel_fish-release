@@ -1,0 +1,13 @@
+Source: ros-lyrical-ros-babel-fish-tools
+Section: misc
+Priority: optional
+Maintainer: Stefan Fabian <ros_babel_fish@stefanfabian.me>
+Build-Depends: debhelper (>= 9.0.0), ros-lyrical-ament-cmake, ros-lyrical-ament-cmake-gtest <!nocheck>, ros-lyrical-geometry-msgs <!nocheck>, ros-lyrical-rclcpp, ros-lyrical-ros-babel-fish, ros-lyrical-ros-babel-fish-test-msgs <!nocheck>, ros-lyrical-std-msgs <!nocheck>, ros-lyrical-yaml-cpp-vendor, ros-lyrical-ros-workspace
+Homepage: https://github.com/StefanFabian/ros_babel_fish
+Standards-Version: 3.9.2
+
+Package: ros-lyrical-ros-babel-fish-tools
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-lyrical-rclcpp, ros-lyrical-ros-babel-fish, ros-lyrical-yaml-cpp-vendor, ros-lyrical-ros-workspace
+Description: Tooling for ROS 2 built on ros_babel_fish.
+ Provides header-only JSON and YAML serialization for dynamic messages and a CLI tool to echo topics.
