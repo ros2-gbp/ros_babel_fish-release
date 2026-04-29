@@ -1,0 +1,13 @@
+Source: ros-lyrical-ros-babel-fish
+Section: misc
+Priority: optional
+Maintainer: Stefan Fabian <ros_babel_fish@stefanfabian.me>
+Build-Depends: debhelper (>= 9.0.0), ros-lyrical-ament-cmake, ros-lyrical-ament-cmake-gtest <!nocheck>, ros-lyrical-ament-index-cpp, ros-lyrical-example-interfaces, ros-lyrical-geometry-msgs, ros-lyrical-geometry-msgs <!nocheck>, ros-lyrical-rclcpp, ros-lyrical-rclcpp-action, ros-lyrical-rcpputils, ros-lyrical-ros-babel-fish-test-msgs <!nocheck>, ros-lyrical-rosidl-runtime-cpp, ros-lyrical-rosidl-typesupport-cpp, ros-lyrical-rosidl-typesupport-introspection-cpp, ros-lyrical-std-msgs <!nocheck>, ros-lyrical-ros-workspace
+Homepage: https://index.ros.org/p/ros_babel_fish/#lyrical
+Standards-Version: 3.9.2
+
+Package: ros-lyrical-ros-babel-fish
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-lyrical-ament-index-cpp, ros-lyrical-geometry-msgs, ros-lyrical-rclcpp, ros-lyrical-rclcpp-action, ros-lyrical-rcpputils, ros-lyrical-rosidl-runtime-cpp, ros-lyrical-rosidl-typesupport-cpp, ros-lyrical-rosidl-typesupport-introspection-cpp, ros-lyrical-ros-workspace
+Description: A runtime message handler for ROS.
+ Allows subscription, publishing, calling of services and actions with messages known only at runtime as long as they are available in the local environment.
