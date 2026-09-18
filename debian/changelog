@@ -1,0 +1,39 @@
+ros-rolling-ros-babel-fish-tools (5.26.90-1resolute) resolute; urgency=high
+
+  * Added tests for tools.
+  * Tool refactoring and consistency renaming.
+  * Also output bw and (de)serialization time for single service call.
+  * Rename WindowStats to unique class names.
+  * Improved code quality.
+  * Added service stats tool.
+  * Added stats tool to measure message frequency, bandwidth, deserialization time and compression gains  (#25 <https://github.com/LOEWE-emergenCITY/ros_babel_fish/issues/25>)
+    * Added stats tool.
+    * Ask overwrite if out file already exists.
+    * Fixed bandwidth units.
+    * Add compression support.
+  * Contributors: Stefan Fabian
+
+ -- "Stefan Fabian" <ros_babel_fish@stefanfabian.me>  Fri, 18 Sep 2026 00:00:00 -0000
+
+ros-rolling-ros-babel-fish-tools (4.26.43-1resolute) resolute; urgency=high
+
+  * C++20 compatibility.
+  * Contributors: Stefan Fabian
+
+ -- "Stefan Fabian" <ros_babel_fish@stefanfabian.me>  Thu, 23 Apr 2026 00:00:00 -0000
+
+ros-rolling-ros-babel-fish-tools (4.26.42-1resolute) resolute; urgency=high
+
+
+
+ -- "Stefan Fabian" <ros_babel_fish@stefanfabian.me>  Wed, 22 Apr 2026 00:00:00 -0000
+
+ros-rolling-ros-babel-fish-tools (4.26.41-1resolute) resolute; urgency=high
+
+  * Added conversion to YAML, JSON and an echo node as example. (#16 <https://github.com/LOEWE-emergenCITY/ros_babel_fish/issues/16>)
+    * Added conversion to YAML, JSON and an echo node as example.
+  * Contributors: Stefan Fabian
+
+ -- "Stefan Fabian" <ros_babel_fish@stefanfabian.me>  Fri, 17 Apr 2026 00:00:00 -0000
+
+
