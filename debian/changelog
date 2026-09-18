@@ -1,0 +1,37 @@
+ros-lyrical-ros-babel-fish-tools (4.26.90-1trixie) trixie; urgency=high
+
+  * [Backport lyrical] Added service stats tool. (#36 <https://github.com/LOEWE-emergenCITY/ros_babel_fish/issues/36>)
+    * Added service stats tool.
+    * Tool refactoring and consistency renaming.
+    * Added tests for tools.
+  * Added stats tool to measure message frequency, bandwidth, deserialization time and compression gains  (#25 <https://github.com/LOEWE-emergenCITY/ros_babel_fish/issues/25>)
+    * Added stats tool.
+    * Ask overwrite if out file already exists.
+    * Fixed bandwidth units.
+    * Add compression support.
+  * Contributors: Stefan Fabian
+
+ -- "Stefan Fabian" <ros_babel_fish@stefanfabian.me>  Fri, 18 Sep 2026 00:00:00 -0000
+
+ros-lyrical-ros-babel-fish-tools (4.26.43-1trixie) trixie; urgency=high
+
+  * C++20 compatibility.
+  * Contributors: Stefan Fabian
+
+ -- "Stefan Fabian" <ros_babel_fish@stefanfabian.me>  Thu, 23 Apr 2026 00:00:00 -0000
+
+ros-lyrical-ros-babel-fish-tools (4.26.42-1trixie) trixie; urgency=high
+
+
+
+ -- "Stefan Fabian" <ros_babel_fish@stefanfabian.me>  Wed, 22 Apr 2026 00:00:00 -0000
+
+ros-lyrical-ros-babel-fish-tools (4.26.41-1trixie) trixie; urgency=high
+
+  * Added conversion to YAML, JSON and an echo node as example. (#16 <https://github.com/LOEWE-emergenCITY/ros_babel_fish/issues/16>)
+    * Added conversion to YAML, JSON and an echo node as example.
+  * Contributors: Stefan Fabian
+
+ -- "Stefan Fabian" <ros_babel_fish@stefanfabian.me>  Fri, 17 Apr 2026 00:00:00 -0000
+
+
