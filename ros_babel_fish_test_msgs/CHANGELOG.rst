@@ -2,7 +2,7 @@
 Changelog for package ros_babel_fish_test_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-4.26.90 (2026-09-18)
+5.26.90 (2026-09-18)
 --------------------
 * Added stats tool to measure message frequency, bandwidth, deserialization time and compression gains  (`#25 <https://github.com/LOEWE-emergenCITY/ros_babel_fish/issues/25>`_)
   * Added stats tool.

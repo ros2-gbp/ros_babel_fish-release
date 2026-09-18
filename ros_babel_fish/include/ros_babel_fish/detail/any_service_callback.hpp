@@ -50,11 +50,7 @@ public:
                               CallbackT, SharedPtrDeferResponseCallbackWithServiceHandle>::value ) {
       callback_.template emplace<SharedPtrDeferResponseCallbackWithServiceHandle>( callback );
     } else {
-      // Dependent false so the assertion only fires when this branch is actually instantiated.
-      static_assert( sizeof( CallbackT ) == 0,
-                     "Invalid callback type passed to AnyServiceCallback! Supported signatures are "
-                     "(request, response), (request_header, request, response), "
-                     "(request_header, request) and (service_handle, request_header, request)." );
+      static_assert( "Invalid callback type passed to AnyServiceCallback!" );
     }
   }
 

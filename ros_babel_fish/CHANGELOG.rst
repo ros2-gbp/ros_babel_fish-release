@@ -2,10 +2,10 @@
 Changelog for package ros_babel_fish
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-4.26.90 (2026-09-18)
+5.26.90 (2026-09-18)
 --------------------
 * Decouple from Node using NodeInterfaces. Aligned APIs with rclcpp changes.
-* Fixed deferred service callbacks.
+* Allow deferred service replies. (`#29 <https://github.com/LOEWE-emergenCITY/ros_babel_fish/issues/29>`_)
 * Improve test flakiness with fast dds.
 * Keep message libraries loaded in process so zenoh doesn't crash on process exit as it keeps dangling references to the type support.
 * Added stats tool to measure message frequency, bandwidth, deserialization time and compression gains  (`#25 <https://github.com/LOEWE-emergenCITY/ros_babel_fish/issues/25>`_)
